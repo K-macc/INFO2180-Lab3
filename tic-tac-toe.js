@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function (create) {
         square.classList.add('square');
 
         square.addEventListener('click', function (e) {
-            if (!e.target.classList.contains("X") && !e.target.classList.contains("O")) {
+            if (!e.target.classList.contains("X") && !e.target.classList.contains("O") && status.textContent != "Congratulations! X is the Winner!" && status.textContent != "Congratulations! O is the Winner!") {
                 if (choice() == "X") {
                     e.target.textContent = "X";
                     e.target.classList.add('X');
