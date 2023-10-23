@@ -8,8 +8,9 @@ document.addEventListener('DOMContentLoaded', function (create) {
     game.forEach(games => {
         games.addEventListener('click', function (e) {
             status.textContent = "Move your mouse over a square and click to play an X or an O.";
+            status.classList.remove("you-won");
 
-            check = ["", "", "", "", "", "", "", "", ""];
+            check = ["n", "n", "n", "n", "n", "n", "n", "n", "n"];
 
             boxes.forEach((square, index) => {
                 square.textContent = "";
@@ -63,12 +64,14 @@ document.addEventListener('DOMContentLoaded', function (create) {
 
 
         if (checkSubset(xlist, row1) == true || checkSubset(xlist, row2) == true || checkSubset(xlist, row3) == true || checkSubset(xlist, col1) == true || checkSubset(xlist, col2) == true || checkSubset(xlist, col3) == true || checkSubset(xlist, dia1) == true || checkSubset(xlist, dia1) == true) {
+            n = 0;
             return 1;
         } else if (checkSubset(olist, row1) == true || checkSubset(olist, row2) == true || checkSubset(olist, row3) == true || checkSubset(olist, col1) == true || checkSubset(olist, col2) == true || checkSubset(olist, col3) == true || checkSubset(olist, dia1) == true || checkSubset(olist, dia1) == true) {
+            n = 1;
             return 2;
-        } else if(x.includes("n")){
+        } else if (x.includes("n")) {
             return 0;
-        }else{
+        } else {
             return -1;
         }
     }
@@ -79,27 +82,32 @@ document.addEventListener('DOMContentLoaded', function (create) {
         square.classList.add('square');
 
         square.addEventListener('click', function (e) {
-            if (choice() == "X") {
-                e.target.textContent = "X";
-                e.target.classList.add('X');
-                check[index] = "X";
-            } else {
-                e.target.textContent = "O";
-                e.target.classList.add('O');
-                check[index] = "O";
-            }
-            switch (win(check)) {
-                case 1:
-                    status.textContent = "Congratulations! X is the Winner!";
-                    break;
-                case 2:
-                    status.textContent = "Congratulations! O is the Winner!";
-                    break;
-                case 0:
-                    break;
-                case -1:
-                    status.textContent = "Good game!"
-                    break;
+            if (!e.target.classList.contains("X") && !e.target.classList.contains("O")) {
+                if (choice() == "X") {
+                    e.target.textContent = "X";
+                    e.target.classList.add('X');
+                    check[index] = "X";
+                } else {
+                    e.target.textContent = "O";
+                    e.target.classList.add('O');
+                    check[index] = "O";
+                }
+
+                switch (win(check)) {
+                    case 1:
+                        status.textContent = "Congratulations! X is the Winner!";
+                        status.classList.add("you-won");
+                        break;
+                    case 2:
+                        status.textContent = "Congratulations! O is the Winner!";
+                        status.classList.add("you-won");
+                        break;
+                    case 0:
+                        break;
+                    case -1:
+                        status.textContent = "Good Game!"
+                        break;
+                }
             }
 
         })
