@@ -63,10 +63,10 @@ document.addEventListener('DOMContentLoaded', function (create) {
         }
 
 
-        if (checkSubset(xlist, row1) == true || checkSubset(xlist, row2) == true || checkSubset(xlist, row3) == true || checkSubset(xlist, col1) == true || checkSubset(xlist, col2) == true || checkSubset(xlist, col3) == true || checkSubset(xlist, dia1) == true || checkSubset(xlist, dia1) == true) {
+        if (checkSubset(xlist, row1) == true || checkSubset(xlist, row2) == true || checkSubset(xlist, row3) == true || checkSubset(xlist, col1) == true || checkSubset(xlist, col2) == true || checkSubset(xlist, col3) == true || checkSubset(xlist, dia1) == true || checkSubset(xlist, dia2) == true) {
             n = 0;
             return 1;
-        } else if (checkSubset(olist, row1) == true || checkSubset(olist, row2) == true || checkSubset(olist, row3) == true || checkSubset(olist, col1) == true || checkSubset(olist, col2) == true || checkSubset(olist, col3) == true || checkSubset(olist, dia1) == true || checkSubset(olist, dia1) == true) {
+        } else if (checkSubset(olist, row1) == true || checkSubset(olist, row2) == true || checkSubset(olist, row3) == true || checkSubset(olist, col1) == true || checkSubset(olist, col2) == true || checkSubset(olist, col3) == true || checkSubset(olist, dia1) == true || checkSubset(olist, dia2) == true) {
             n = 1;
             return 2;
         } else if (x.includes("n")) {
